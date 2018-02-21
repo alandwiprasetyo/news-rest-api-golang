@@ -316,9 +316,7 @@ Response :
 
 ### List Topics
 
-### GET /topics
-
-`GET localhost:9000/topics`
+    GET localhost:9000/topics
 
 Using :
 
@@ -349,11 +347,9 @@ Response :
         "status": "success"
     }
 
-### Add Topics
+### Create Topics
 
-### POST /topics
-
-`POST localhost:9000/topics`
+    POST localhost:9000/topics
 
 Using :
 
@@ -366,10 +362,8 @@ Request example:
     }
 
 ### Edit Topics
-
-### PUT /topics/{id}
-
-`PUT localhost:9000/stocks/{id}/edit`
+    
+    PUT localhost:9000/topics/{id}
 
 Using :
 
