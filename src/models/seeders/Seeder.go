@@ -32,7 +32,7 @@ func createNews(topic models.Topic, topic2 models.Topic, topic3 models.Topic) (i
 		Status:      "draft",
 		Description: "This is News 2 description",
 		Topic: []models.Topic{
-			topic,
+			topic2,
 		},
 	}
 	database.Create(&news2)
