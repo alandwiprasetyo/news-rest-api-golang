@@ -13,7 +13,11 @@ type NewsDeleteService struct {
 func (res *NewsDeleteService) DeleteNews(id string) *NewsDeleteService {
 	database := database2.GetDatabase()
 	news := models.News{}
-	result := database.Where("id = ?", id).Delete(&news)
+
+	result := database.Where("id = ?", id).Find(&news)
+	news.Status = models.DELETED
+	database.Save(&news).Delete(&news)
+	database.Where("id = ?", id).Find(&news)
 	if result.Error != nil {
 		res.Error = result.Error.Error()
 	} else {

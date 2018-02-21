@@ -6,5 +6,5 @@ type NewsDTO struct {
 	Description string `form:"Description" json:"Description" validate:"required"`
 	Tags        string `form:"Tags" json:"tags"`
 	Status      string `form:"Status" json:"status"`
-	Type        string `sql:"not null;type:ENUM('publish', 'draft', 'deleted')"`
+	Type        string `sql:"not null;type:ENUM('publish', 'draft', 'deleted');default:'draft'"`
 }

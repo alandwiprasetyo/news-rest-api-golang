@@ -7,11 +7,13 @@ import (
 
 func NewsRoutes() {
 	router := common.GetRouter()
-	router.GET("/news", controller.ListNews)
-	router.GET("/newss/:topicId", controller.ListNewsByTopic)
-	router.POST("/news", controller.CreateNews)
-	router.PUT("/news/:id", controller.UpdateNews)
-	router.GET("/news/:id", controller.ShowNews)
-	router.DELETE("/news/:id", controller.DeleteNews)
 
+	router.GET("/news", controller.ListNews)
+	router.POST("/news", controller.CreateNews)
+	router.GET("/news/:id", controller.ShowNews)
+	router.PUT("/news/:id", controller.UpdateNews)
+	router.DELETE("/news/:id", controller.DeleteNews)
+	//router.GET("/news/topics/:topic", GetHandler)
+	//router.GET("/news/status/:status", GetHandler)
 }
+

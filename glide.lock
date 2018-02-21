@@ -1,5 +1,5 @@
 hash: f87adcb38ebf9f9f737a34b3275b5006d7e84016f163da6c420662be6e533072
-updated: 2018-02-20T16:42:10.266571+07:00
+updated: 2018-02-21T21:45:40.653135+07:00
 imports:
 - name: github.com/asaskevich/govalidator
   version: 521b25f4b05fd26bec69d9dedeb8f9c9a83939a8
@@ -14,8 +14,11 @@ imports:
   version: e4cbcb5d0652150d40ad0646651076b6bd2be4f6
   subpackages:
   - currency
+  - en
 - name: github.com/go-playground/universal-translator
   version: 71201497bace774495daed26a3874fd339e0b538
+- name: github.com/go-sql-driver/mysql
+  version: bc14601d1bd56421dd60f561e6052c9ed77f9daf
 - name: github.com/golang/protobuf
   version: bbd03ef6da3a115852eaf24c8a1c46aeb39aa175
   subpackages:
@@ -23,13 +26,11 @@ imports:
 - name: github.com/jinzhu/gorm
   version: 58e34726dfc069b558038efbaa25555f182d1f7a
   subpackages:
-  - dialects/sqlite
+  - dialects/mysql
 - name: github.com/jinzhu/inflection
   version: 1c35d901db3da928c72a72d8458480cc9ade058f
 - name: github.com/mattn/go-isatty
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
-- name: github.com/mattn/go-sqlite3
-  version: 696e2e43cb00dcb1acaf6073e01493e3c4197b75
 - name: github.com/ugorji/go
   version: b5b949564861e43a03568a0b134c135cf318e5c8
   subpackages:
@@ -38,6 +39,10 @@ imports:
   version: 37707fdb30a5b38865cfb95e5aab41707daec7fd
   subpackages:
   - unix
+- name: google.golang.org/appengine
+  version: 5bee14b453b4c71be47ec1781b0fa61c2ea182db
+  subpackages:
+  - cloudsql
 - name: gopkg.in/go-playground/validator.v8
   version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
 - name: gopkg.in/go-playground/validator.v9

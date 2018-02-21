@@ -8,5 +8,5 @@ import (
 func Setup()  {
 	NewsRoutes()
 	TopicRoutes()
-	common.GetRouter().Run(":3000")
+	common.GetRouter().Run(":9000")
 }

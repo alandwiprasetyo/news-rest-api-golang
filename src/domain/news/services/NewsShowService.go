@@ -15,9 +15,11 @@ func (res *NewsShowService) ShowNews(id string) *NewsShowService {
 	news := models.News{}
 
 	result := database.Preload("Topic").Where("id = ?", id).First(&news)
+
 	if result.RecordNotFound() {
 		return res
 	}
+
 	if result.Error != nil {
 		res.Error = result.Error.Error()
 	}
