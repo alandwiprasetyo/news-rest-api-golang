@@ -1,0 +1,8 @@
+package: github.com/alandwiprasetyo/rest-api
+import: 
+- package: github.com/gin-gonic/gin
+  version: v1.2
+- package: github.com/asaskevich/govalidator
+  version: v8
+- package: gopkg.in/go-playground/validator.v9
+  version: v9.9.3

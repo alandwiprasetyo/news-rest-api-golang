@@ -1,0 +1,8 @@
+# ORM
+Using GORM (Recommended)
+go get -u github.com/jinzhu/gorm
+
+#HTTP
+github.com/gin-gonic/gin -> HTTP web framework written
+
+#
