@@ -26,7 +26,7 @@ To run all tests :
 
 ### List News
 
-    `GET localhost:9000/news`
+    GET localhost:9000/news
 
 Using :
 
@@ -110,7 +110,7 @@ Response :
 
 ### Show News By Id
 
-    `GET localhost:9000/news/{id}
+    GET localhost:9000/news/{id}
 
 Using :
 
@@ -150,7 +150,7 @@ Response :
     
 ### List News By Topic
 
-    `GET localhost:9000/news?topicId={id}`
+    GET localhost:9000/news?topicId={id}
 
 Using :
 
@@ -216,7 +216,7 @@ Response :
     
 ### List News By Status
 
-    `GET localhost:9000/news?status={status}`
+    GET localhost:9000/news?status={status}
 
 Using :
 
@@ -257,7 +257,7 @@ Response :
 
 ### Create News
 
-    `POST localhost:9000/news`
+    POST localhost:9000/news
 
 Using :
 
@@ -278,7 +278,7 @@ Request Example :
 
 ### PUT /news/{id}
 
-`PUT localhost:9000/news/{id}`
+    PUT localhost:9000/news/{id}
 
 Using :
 
@@ -298,7 +298,7 @@ Request example:
 
 ### DELETE /news/{id}
 
-`DELETE localhost:9000/news/1
+    DELETE localhost:9000/news/1
 
 Using :
 
