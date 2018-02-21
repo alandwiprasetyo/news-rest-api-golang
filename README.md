@@ -276,8 +276,6 @@ Request Example :
 
 ### Edit news
 
-### PUT /news/{id}
-
     PUT localhost:9000/news/{id}
 
 Using :
@@ -296,7 +294,7 @@ Request example:
     }
     
 
-### DELETE /news/{id}
+### Delete News
 
     DELETE localhost:9000/news/1
 
@@ -375,3 +373,19 @@ Request example:
         "name": "Topik Ekonomi "
     }
 
+
+### Delete Topics
+
+    DELETE localhost:9000/topics/1
+
+Using :
+
+    curl --request DELETE localhost:9000/topics/1
+
+Response :
+
+    {
+        "data": null,
+        "status": "success"
+    }
+    
