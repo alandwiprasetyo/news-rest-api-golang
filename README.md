@@ -1,4 +1,4 @@
-# INVENTORY REST API
+# NEWS REST API
 
 Technology:
 
@@ -26,9 +26,7 @@ To run all tests :
 
 ### List News
 
-### GET /news
-
-`GET localhost:9000/news`
+    `GET localhost:9000/news`
 
 Using :
 
@@ -112,9 +110,7 @@ Response :
 
 ### Show News By Id
 
-### GET /news/{id}
-
-`GET localhost:9000/news/1
+    `GET localhost:9000/news/{id}
 
 Using :
 
@@ -154,9 +150,7 @@ Response :
     
 ### List News By Topic
 
-### GET /news?topicId={id}
-
-`GET localhost:9000/news?topicId={id}`
+    `GET localhost:9000/news?topicId={id}`
 
 Using :
 
@@ -222,13 +216,11 @@ Response :
     
 ### List News By Status
 
-### GET /news?status={status}
-
-`GET localhost:9000/news?status={status}`
+    `GET localhost:9000/news?status={status}`
 
 Using :
 
-    curl --request GET localhost:9000/news?topicId=publish
+    curl --request GET localhost:9000/news?status=publish
 
 Response :
 
@@ -263,11 +255,9 @@ Response :
         "status": "success"
     }
 
-### Add Product
+### Create News
 
-### POST /products
-
-`POST localhost:9000/news`
+    `POST localhost:9000/news`
 
 Using :
 
@@ -288,7 +278,7 @@ Request Example :
 
 ### PUT /news/{id}
 
-`PUT localhost:9000/products/{id}/edit`
+`PUT localhost:9000/news/{id}`
 
 Using :
 
