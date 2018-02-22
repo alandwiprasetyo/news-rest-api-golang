@@ -24,15 +24,24 @@
 	    PORT     = "3306"
 	    DATABASE = "restapidb"
     )
+    
+# Schema Database
+
+![alt text](SchemaDatabase.png)
+
 # Running
 
         $ go run main.go
 
 # Testing
 
+Install ginkgo :
+
+        $ go get -u github.com/onsi/ginkgo
+
 To run all tests :
 
-        $ go test
+        $ ginkgo -r src/tests/
 
 # API Resources
 
