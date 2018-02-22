@@ -6,7 +6,16 @@ Technology:
 * MySql
 # Requirements
   - Go
-
+  
+# Database Configuration
+ Edit file `database/Database.go`
+        
+    const (
+	    USERNAME = "user_name"
+	    PASSWORD = "user_password"
+	    DATABASE = "database_name"
+    )
+    
 # Running
 
         $ go run main.go
