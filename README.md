@@ -272,6 +272,48 @@ Response :
         "status": "success"
     }
 
+    
+### List News By Status and Topic
+
+    GET localhost:9000/news?status={status}&topicId={topicId}
+
+Using :
+
+    curl --request GET localhost:9000/news?status=publish&topicId=1
+
+Response :
+
+    {
+        "data": {
+            "news": [
+                {
+                    "id": 1,
+                    "created_at": "2018-02-22T22:35:26+07:00",
+                    "updated_at": "2018-02-22T22:35:26+07:00",
+                    "deleted_at": null,
+                    "headline": "Headline 1",
+                    "title": "Title 1",
+                    "status": "publish",
+                    "description": "This is News 1 description",
+                    "tags": "tag1, tag2",
+                    "topics": [
+                        {
+                            "id": 1,
+                            "name": "Topic 1",
+                            "description": "this is description topic 1"
+                        },
+                        {
+                            "id": 2,
+                            "name": "Topic 2",
+                            "description": "this is description topic 2"
+                        }
+                    ]
+                }
+            ]
+        },
+        "status": "success"
+    }
+
 ### Create News
 
     POST localhost:9000/news
