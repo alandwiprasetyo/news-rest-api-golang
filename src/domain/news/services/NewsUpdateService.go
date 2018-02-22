@@ -25,7 +25,8 @@ func (res *NewsUpdateService) UpdateNews(id string, dto *dto.NewsDTO) *NewsUpdat
 		return res
 	}
 	news.Headline = dto.Headline
-	news.Description = dto.Title
+	news.Title = dto.Title
+	news.Description = dto.Description
 	news.Tags = dto.Tags
 	news.Status = dto.Status
 

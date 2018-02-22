@@ -16,12 +16,12 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models"
 )
 
-func TestCreateNews(test *testing.T) {
+func TestCreateTopic(test *testing.T) {
 	gomega.RegisterFailHandler(ginkgo.Fail)
-	ginkgo.RunSpecs(test, "NewsCreateController Test Suite")
+	ginkgo.RunSpecs(test, "TopicCreateController Test Suite")
 }
 
-var _ = ginkgo.Describe("Test Create News", func() {
+var _ = ginkgo.Describe("Test Create Topic", func() {
 	var router *gin.Engine
 
 	var _ = ginkgo.BeforeEach(func() {
@@ -34,49 +34,45 @@ var _ = ginkgo.Describe("Test Create News", func() {
 		database.DropTable()
 	})
 
-	ginkgo.It("should success to create news with valid payload", func() {
-		news := models.News{}
-		database.GetDatabase().Last(&news)
+	ginkgo.It("should success to create topic with valid payload", func() {
+		topic := models.Topic{}
+		database.GetDatabase().Last(&topic)
 		payload := map[string]interface{}{
-
-			"headline":    "headline",
-			"title":       "title",
+			"name":    "Topic name",
 			"description": "this is description",
-			"tags":        "tag, tes",
-			"status":      "draft",
 		}
 
 		body, _ := json.Marshal(payload)
 		w := httptest.NewRecorder()
 
-		req, _ := http.NewRequest("POST", "/news", bytes.NewReader(body))
+		req, _ := http.NewRequest("POST", "/topics", bytes.NewReader(body))
 		req.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, req)
 
-		newData := models.News{}
+		newData := models.Topic{}
 		database.GetDatabase().Last(&newData)
 
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusCreated))
-		gomega.Expect(newData.ID).To(gomega.Not(gomega.Equal(news.ID)))
+		gomega.Expect(newData.ID).To(gomega.Not(gomega.Equal(topic.ID)))
 	})
 
 	ginkgo.It("should error validation with empty payload", func() {
-		news := models.News{}
-		database.GetDatabase().Last(&news)
+		topic := models.Topic{}
+		database.GetDatabase().Last(&topic)
 
 		payload := map[string]interface{}{
 			"headline": "headline",
 		}
 		body, _ := json.Marshal(payload)
 		w := httptest.NewRecorder()
-		request, _ := http.NewRequest("POST", "/news", bytes.NewReader(body))
+		request, _ := http.NewRequest("POST", "/topics", bytes.NewReader(body))
 		request.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, request)
 
-		newData := models.News{}
+		newData := models.Topic{}
 		database.GetDatabase().Last(&newData)
 
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusBadRequest))
-		gomega.Expect(newData.ID).To(gomega.Equal(news.ID))
+		gomega.Expect(newData.ID).To(gomega.Equal(topic.ID))
 	})
 })

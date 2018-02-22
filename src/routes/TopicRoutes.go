@@ -2,11 +2,10 @@ package routes
 
 import (
 	"github.com/alandwiprasetyo/rest-api/src/domain/topic/controller"
-	"github.com/alandwiprasetyo/rest-api/src/common"
 )
 
 func TopicRoutes() {
-	router := common.GetRouter()
+	router := GetRouter()
 	router.GET("/topics", controller.ListTopic)
 	router.POST("/topics", controller.CreateTopic)
 	router.PUT("/topics/:id", controller.UpdateTopic)

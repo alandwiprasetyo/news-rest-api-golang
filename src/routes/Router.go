@@ -1,4 +1,4 @@
-package common
+package routes
 
 import (
 	"github.com/gin-gonic/gin"
@@ -7,6 +7,8 @@ import (
 var router *gin.Engine
 func SetRoutes() *gin.Engine {
 	router = gin.Default()
+	NewsRoutes()
+	TopicRoutes()
 	return router
 }
 func GetRouter() *gin.Engine {
