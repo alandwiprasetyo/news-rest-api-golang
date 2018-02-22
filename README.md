@@ -36,8 +36,8 @@ To run all tests :
 
 # API Resources
 
-  - [News](#News)
-  - [Topics](#Topics)
+  - [News](#news)
+  - [Topics](#topics)
 
 ## News
 
