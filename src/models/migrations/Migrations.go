@@ -7,10 +7,7 @@ import (
 
 func Migration() {
 	db := database.GetDatabase()
-	database.DropTable()
 	db.CreateTable(&models.News{})
 	db.CreateTable(&models.Topic{})
-	//database.Model("news_topics").AddForeignKey("topic_id", "topics(id)", "RESTRICT", "RESTRICT")
-	//database.Model("news_topics").AddForeignKey("news_id", "news(id)", "RESTRICT", "RESTRICT")
 
 }
