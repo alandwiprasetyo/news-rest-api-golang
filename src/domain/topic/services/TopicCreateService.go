@@ -20,7 +20,7 @@ func (res *TopicCreateService) CreateTopic(dto *dto.TopicDTO) *TopicCreateServic
 	}
 	database := database2.GetDatabase()
 	topic := models.Topic{Name: dto.Name, Description: dto.Description}
-	created := database.Create(&topic)
+	created := database.Preload("News").Create(&topic)
 	if created.Error == nil {
 		res.Topic = topic
 	} else {

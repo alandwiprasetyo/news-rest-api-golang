@@ -15,12 +15,12 @@ func (res *NewsListService) ListNews(topicId string, status string) *NewsListSer
 	var news [] models.News
 	var topic models.Topic
 	if status != "" && topicId != "" {
-		database.Where("id = ?", topicId).First(&topic)
+		database.First(&topic,topicId)
 		database.Unscoped().Preload("Topic").Model(&topic).Where("status = ?", status).Related(&news, "News")
 	} else if status != "" {
 		database.Unscoped().Preload("Topic").Where("status = ?", status).Find(&news)
 	} else if topicId != "" {
-		database.Where("id = ?", topicId).First(&topic)
+		database.First(&topic, topicId)
 		database.Preload("Topic").Model(&topic).Related(&news, "News")
 	} else {
 		database.Preload("Topic").Find(&news)
@@ -34,7 +34,7 @@ func (res *NewsListService) ListNewsByTopic(id string) *NewsListService {
 	var news [] models.News
 	var topic models.Topic
 
-	database.Where("id = ?", id).First(&topic)
+	database.First(&topic, id)
 	database.Preload("Topic").Model(&topic).Related(&news, "News")
 
 	res.News = news

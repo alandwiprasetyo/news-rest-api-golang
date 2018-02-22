@@ -14,7 +14,7 @@ func (res *TopicShowService) ShowTopic(id string) *TopicShowService {
 	database := database2.GetDatabase()
 	topic := models.Topic{}
 
-	result := database.Preload("Topic").Where("id = ?", id).First(&topic)
+	result := database.Where("id = ?", id).First(&topic)
 	if result.RecordNotFound() {
 		return res
 	}

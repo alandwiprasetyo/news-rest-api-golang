@@ -14,10 +14,11 @@ func (res *NewsDeleteService) DeleteNews(id string) *NewsDeleteService {
 	database := database2.GetDatabase()
 	news := models.News{}
 
-	result := database.Where("id = ?", id).Find(&news)
+	result := database.Where("id = ?", id).First(&news)
 	news.Status = models.DELETED
 	database.Save(&news).Delete(&news)
-	database.Where("id = ?", id).Find(&news)
+	database.Find(&news,id)
+
 	if result.Error != nil {
 		res.Error = result.Error.Error()
 	} else {
