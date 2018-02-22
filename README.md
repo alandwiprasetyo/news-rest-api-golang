@@ -239,6 +239,10 @@ Using :
 
     curl --request GET localhost:9000/news?status=publish
 
+Option Status :
+
+    status : publish, draft, deleted
+
 Response :
 
     {
@@ -281,6 +285,10 @@ Using :
 
     curl --request GET localhost:9000/news?status=publish&topicId=1
 
+Option Status :
+
+    status : publish, draft, deleted
+    
 Response :
 
     {
