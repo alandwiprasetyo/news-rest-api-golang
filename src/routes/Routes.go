@@ -1,12 +1,12 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/alandwiprasetyo/rest-api/src/common"
 )
 
-
-func Setup()  {
+func Setup() *gin.Engine {
 	NewsRoutes()
 	TopicRoutes()
-	common.GetRouter().Run(":9000")
+	return common.GetRouter()
 }

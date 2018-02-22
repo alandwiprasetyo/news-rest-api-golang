@@ -1,10 +1,10 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/domain/topic/dto"
+	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/common"
-	database2 "github.com/alandwiprasetyo/rest-api/src/database"
+	database "github.com/alandwiprasetyo/rest-api/src/database"
 )
 
 type TopicCreateService struct {
@@ -18,9 +18,9 @@ func (res *TopicCreateService) CreateTopic(dto *dto.TopicDTO) *TopicCreateServic
 		res.ErrorValidation = common.GetValidationMessage(err)
 		return res
 	}
-	database := database2.GetDatabase()
+	database := database.GetDatabase()
 	topic := models.Topic{Name: dto.Name, Description: dto.Description}
-	created := database.Preload("News").Create(&topic)
+	created := database.Create(&topic)
 	if created.Error == nil {
 		res.Topic = topic
 	} else {

@@ -296,7 +296,7 @@ Request example:
 
 ### Delete News
 
-    DELETE localhost:9000/news/1
+    DELETE localhost:9000/news/{id}
 
 Using :
 

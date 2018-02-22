@@ -6,3 +6,9 @@ import:
   version: v8
 - package: gopkg.in/go-playground/validator.v9
   version: v9.9.3
+- package: github.com/onsi/ginkgo
+  version: v1.4.0
+  subpackages:
+  - ginkgo
+- package: github.com/onsi/gomega
+  version: v1.3.0

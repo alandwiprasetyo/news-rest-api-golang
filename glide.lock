@@ -1,5 +1,5 @@
-hash: f87adcb38ebf9f9f737a34b3275b5006d7e84016f163da6c420662be6e533072
-updated: 2018-02-21T21:45:40.653135+07:00
+hash: ed31a296d17f8ffd89cc3f31ccdf8d368357c42dbd82e4306d3e0816c4f8e944
+updated: 2018-02-22T10:27:36.597093+07:00
 imports:
 - name: github.com/asaskevich/govalidator
   version: 521b25f4b05fd26bec69d9dedeb8f9c9a83939a8
@@ -31,6 +31,41 @@ imports:
   version: 1c35d901db3da928c72a72d8458480cc9ade058f
 - name: github.com/mattn/go-isatty
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
+- name: github.com/onsi/ginkgo
+  version: 9eda700730cba42af70d53180f9dcce9266bc2bc
+  subpackages:
+  - config
+  - ginkgo
+  - internal/codelocation
+  - internal/containernode
+  - internal/failer
+  - internal/leafnodes
+  - internal/remote
+  - internal/spec
+  - internal/spec_iterator
+  - internal/specrunner
+  - internal/suite
+  - internal/testingtproxy
+  - internal/writer
+  - reporters
+  - reporters/stenographer
+  - reporters/stenographer/support/go-colorable
+  - reporters/stenographer/support/go-isatty
+  - types
+- name: github.com/onsi/gomega
+  version: 003f63b7f4cff3fc95357005358af2de0f5fe152
+  subpackages:
+  - format
+  - internal/assertion
+  - internal/asyncassertion
+  - internal/oraclematcher
+  - internal/testingtsupport
+  - matchers
+  - matchers/support/goraph/bipartitegraph
+  - matchers/support/goraph/edge
+  - matchers/support/goraph/node
+  - matchers/support/goraph/util
+  - types
 - name: github.com/ugorji/go
   version: b5b949564861e43a03568a0b134c135cf318e5c8
   subpackages:
@@ -51,4 +86,28 @@ imports:
   - translations/en
 - name: gopkg.in/yaml.v2
   version: d670f9405373e636a5a2765eea47fac0c9bc91a4
-testImports: []
+testImports:
+- name: golang.org/x/net
+  version: cbe0f9307d0156177f9dd5dc85da1a31abc5f2fb
+  subpackages:
+  - html
+  - html/atom
+  - html/charset
+- name: golang.org/x/text
+  version: 9e2b64d659da1afe07ce1c9c1dfefc09d188f21e
+  subpackages:
+  - encoding
+  - encoding/charmap
+  - encoding/htmlindex
+  - encoding/internal
+  - encoding/internal/identifier
+  - encoding/japanese
+  - encoding/korean
+  - encoding/simplifiedchinese
+  - encoding/traditionalchinese
+  - encoding/unicode
+  - internal/tag
+  - internal/utf8internal
+  - language
+  - runes
+  - transform
