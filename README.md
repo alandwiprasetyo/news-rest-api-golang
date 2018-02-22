@@ -1,11 +1,8 @@
 # NEWS REST API
 
-Technology:
-
-* Go 
-* MySql
 # Requirements
   - Go
+  - MySql
   
 # Database Configuration
  Edit file `database/Database.go`
