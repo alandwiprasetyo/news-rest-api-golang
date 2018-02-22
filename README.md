@@ -10,9 +10,20 @@
     const (
 	    USERNAME = "user_name"
 	    PASSWORD = "user_password"
+	    HOST     = "host"
+	    PORT     = "port"
 	    DATABASE = "database_name"
     )
     
+  Example :
+  
+    const (
+	    USERNAME = "root"
+	    PASSWORD = "root"
+	    HOST     = "localhost"
+	    PORT     = "3306"
+	    DATABASE = "restapidb"
+    )
 # Running
 
         $ go run main.go

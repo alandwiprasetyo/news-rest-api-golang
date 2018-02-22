@@ -12,16 +12,18 @@ var database *gorm.DB
 const (
 	USERNAME = "root"
 	PASSWORD = "root"
+	HOST     = "localhost"
+	PORT     = "3306"
 	DATABASE = "restapidb"
 )
 
 func GetDatabase() *gorm.DB {
 	if database == nil {
-		database, _ = gorm.Open("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local", USERNAME, PASSWORD, DATABASE))
+		database, _ = gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", USERNAME, PASSWORD, HOST, PORT, DATABASE))
 	}
 	return database
 }
-func DropTable () {
+func DropTable() {
 	GetDatabase().DropTable(&models.News{})
 	GetDatabase().DropTable(&models.Topic{}, "news_topics")
 }
