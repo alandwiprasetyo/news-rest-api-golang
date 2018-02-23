@@ -41,7 +41,7 @@ Install dependancies use glide :
         $ glide install
         
         
-To run all tests :
+To run app :
 
 
         $ go run web.go
