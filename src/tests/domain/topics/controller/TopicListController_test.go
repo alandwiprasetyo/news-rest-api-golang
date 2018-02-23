@@ -12,15 +12,14 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models"
 	"net/http/httptest"
 	"net/http"
-	"fmt"
 )
 
-func TestShowNews(test *testing.T) {
+func TestListTopic(test *testing.T) {
 	gomega.RegisterFailHandler(ginkgo.Fail)
-	ginkgo.RunSpecs(test, "NewsShowController Test Suite")
+	ginkgo.RunSpecs(test, "TopicListController Test Suite")
 }
 
-var _ = ginkgo.Describe("Test Show News", func() {
+var _ = ginkgo.Describe("Test List Topic", func() {
 	var router *gin.Engine
 
 	var _ = ginkgo.BeforeEach(func() {
@@ -33,27 +32,15 @@ var _ = ginkgo.Describe("Test Show News", func() {
 		database.DropTable()
 	})
 
-	ginkgo.It("should return not found", func() {
-		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", fmt.Sprintf("/news/12313-1231"), nil)
-		req.Header.Add("Content-Type", "application/json")
-		router.ServeHTTP(w, req)
-
-		gomega.Expect(w.Code).To(gomega.Equal(http.StatusNotFound))
-	})
-
-	ginkgo.It("should return show news by ID", func() {
-		product := models.News{
-			Headline:    "Headline",
-			Title:       "Title",
+	ginkgo.It("should return product list", func() {
+		product := models.Topic{
+			Name:       "Topic Name",
 			Description: "This is description",
-			Status:      "draft",
-			Tags:        "Tag1, Tag 2",
 		}
 		database.GetDatabase().Create(&product)
 
 		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", fmt.Sprintf("/news/%d", product.ID), nil)
+		req, _ := http.NewRequest("GET", "/topics", nil)
 		req.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, req)
 

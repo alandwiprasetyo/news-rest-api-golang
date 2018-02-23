@@ -5,15 +5,21 @@ import (
 )
 
 var router *gin.Engine
+
 func SetRoutes() *gin.Engine {
 	router = gin.Default()
-	NewsRoutes()
-	TopicRoutes()
+	Setup()
 	return router
 }
+
 func GetRouter() *gin.Engine {
 	if router == nil {
 		return SetRoutes()
 	}
 	return router
+}
+
+func Setup() {
+	NewsRoutes()
+	TopicRoutes()
 }

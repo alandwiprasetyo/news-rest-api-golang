@@ -9,5 +9,5 @@ import (
 func main() {
 	migrations.Migration()
 	seeders.Seeder()
-	routes.Setup().Run(":9000")
+	routes.GetRouter().Run(":9000")
 }

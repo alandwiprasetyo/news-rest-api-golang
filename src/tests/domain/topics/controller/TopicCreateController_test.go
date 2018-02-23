@@ -27,7 +27,7 @@ var _ = ginkgo.Describe("Test Create Topic", func() {
 	var _ = ginkgo.BeforeEach(func() {
 		migrations.Migration()
 		seeders.Seeder()
-		router = routes.Setup()
+		router = routes.GetRouter()
 	})
 
 	var _ = ginkgo.AfterEach(func() {
