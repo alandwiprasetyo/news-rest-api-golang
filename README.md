@@ -31,6 +31,19 @@
 
 # Running
 
+Install glide (Package Management for Golang) :
+
+        $ curl https://glide.sh/get | sh
+        
+        
+Install dependancies use glide :
+
+        $ glide install
+        
+        
+To run all tests :
+
+
         $ go run web.go
 
 # Testing
