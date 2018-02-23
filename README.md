@@ -31,7 +31,7 @@
 
 # Running
 
-        $ go run main.go
+        $ go run web.go
 
 # Testing
 
