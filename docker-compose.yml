@@ -1,0 +1,40 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    image: rest-api
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+      - cache
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_CONNECTION: mysql
+      DB_HOST: rest_api_db_1
+      DB_PORT: 3306
+      DB_DATABASE: restapidb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    expose:
+      - 9000
+    volumes:
+      - .:/go/src/github.com/alandwiprasetyo/rest-api
+
+  db:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: restapidb
+
+  cache:
+    image: memcached:latest
+    ports:
+      - 11211:11211
+    command: memcached -m 1024m

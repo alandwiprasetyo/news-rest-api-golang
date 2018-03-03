@@ -1,5 +1,5 @@
 package: github.com/alandwiprasetyo/rest-api
-import: 
+import:
 - package: github.com/gin-gonic/gin
   version: v1.2
 - package: github.com/asaskevich/govalidator
