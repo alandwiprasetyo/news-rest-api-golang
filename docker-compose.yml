@@ -5,7 +5,7 @@ services:
       context: .
     image: rest-api
     ports:
-      - 8080:8080
+      - 80:80
     depends_on:
       - db
       - cache
@@ -19,10 +19,9 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: root
     expose:
-      - 9000
+      - 80
     volumes:
       - .:/go/src/github.com/alandwiprasetyo/rest-api
-
   db:
     image: mysql:latest
     ports:

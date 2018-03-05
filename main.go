@@ -9,6 +9,5 @@ import (
 func main() {
 	migrations.Migration()
 	seeders.Seeder()
-	routes.GetRouter().Run()
-
+	routes.GetRouter().Run(":80")
 }

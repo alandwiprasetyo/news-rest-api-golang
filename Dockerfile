@@ -14,4 +14,4 @@ RUN go install github.com/alandwiprasetyo/rest-api
 ENTRYPOINT /go/bin/rest-api
 
 # Document that the service listens on port 8080.
-EXPOSE 8080
+EXPOSE 80
