@@ -43,8 +43,7 @@ Install dependancies use glide :
         
 To run app :
 
-
-        $ go run web.go
+        $ docker-compose up --build -d
 
 # Testing
 
