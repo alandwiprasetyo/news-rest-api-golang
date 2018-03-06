@@ -7,6 +7,7 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 func TestTopic(t *testing.T) {
@@ -26,7 +27,7 @@ var _ = ginkgo.Describe("Test Topics Model", func() {
 	ginkgo.Describe("Test Create Topics Model", func() {
 
 		ginkgo.It("Should create Topics models", func() {
-			topic := Topic{Name: "Topic name", Description: "This is description"}
+			topic := tables.Topic{Name: "Topic name", Description: "This is description"}
 			gomega.Expect(topic.Name).To(gomega.Equal("Topic name"))
 			gomega.Expect(topic.Description).To(gomega.Equal("This is description"))
 		})
