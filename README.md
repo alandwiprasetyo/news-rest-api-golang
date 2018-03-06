@@ -53,7 +53,7 @@ Install ginkgo :
 
 To run all tests :
 
-        $ ginkgo -r src/tests/
+        $ ginkgo -r tests/
 
 # API Resources
 
