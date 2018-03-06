@@ -4,11 +4,10 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"testing"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/database"
-	"github.com/alandwiprasetyo/rest-api/src/domain/news/services"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 func TestProductListService(t *testing.T) {
@@ -28,7 +27,7 @@ var _ = Describe("Test NewsListService", func() {
 
 	Describe("Test func ListNews", func() {
 		It("should return news list", func() {
-			product := models.News{
+			product := tables.News{
 				Headline:    "Headline",
 				Title:       "Title",
 				Status:      "draft",
@@ -37,7 +36,7 @@ var _ = Describe("Test NewsListService", func() {
 			}
 			database.GetDatabase().Create(&product)
 
-			service := services.NewsListService{}
+			service := NewsListService{}
 			res := service.ListNews("", "")
 
 			Expect(res.Error).To(Equal(""))

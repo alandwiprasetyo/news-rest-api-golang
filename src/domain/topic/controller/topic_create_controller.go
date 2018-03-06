@@ -1,10 +1,10 @@
 package controller
 
 import (
+	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/alandwiprasetyo/rest-api/src/domain/topic/dto"
 	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
-	"net/http"
 )
 
 func CreateTopic(c *gin.Context) {

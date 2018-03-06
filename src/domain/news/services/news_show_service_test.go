@@ -4,12 +4,11 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"testing"
-	"github.com/alandwiprasetyo/rest-api/src/domain/news/services"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/database"
 	"strconv"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 func TestNewsShowService(t *testing.T) {
@@ -28,7 +27,7 @@ var _ = Describe("Test NewsShowService", func() {
 	})
 	Describe("Test func ShowNews", func() {
 		It("should return not found", func() {
-			service := services.NewsShowService{}
+			service := NewsShowService{}
 			res := service.ShowNews("1232-12")
 
 			Expect(res.Error).To(Equal(""))
@@ -36,7 +35,7 @@ var _ = Describe("Test NewsShowService", func() {
 		})
 
 		It("should return news", func() {
-			news := models.News{
+			news := tables.News{
 				Headline:    "Headline",
 				Title:       "Title",
 				Status:      "draft",
@@ -45,7 +44,7 @@ var _ = Describe("Test NewsShowService", func() {
 			}
 			database.GetDatabase().Create(&news)
 
-			service := services.NewsShowService{}
+			service := NewsShowService{}
 			res := service.ShowNews(strconv.Itoa(news.ID))
 
 			Expect(res.Error).To(Equal(""))

@@ -1,15 +1,16 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/database"
 	"github.com/alandwiprasetyo/rest-api/src/common"
 	"github.com/alandwiprasetyo/rest-api/src/domain/news/dto"
+	"github.com/alandwiprasetyo/rest-api/src/models/base"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 type NewsUpdateService struct {
-	models.Response
-	News models.News
+	base.Response
+	News tables.News
 }
 
 func (res *NewsUpdateService) UpdateNews(id string, dto *dto.NewsDTO) *NewsUpdateService {
@@ -18,7 +19,7 @@ func (res *NewsUpdateService) UpdateNews(id string, dto *dto.NewsDTO) *NewsUpdat
 		res.ErrorValidation = common.GetValidationMessage(err)
 		return res
 	}
-	news := models.News{}
+	news := tables.News{}
 	result := database.GetDatabase().Preload("Topic").Where("id = ?", id).First(&news)
 
 	if result.RecordNotFound() {

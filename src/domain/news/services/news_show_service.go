@@ -1,18 +1,19 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	database2 "github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/models/base"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 type NewsShowService struct {
-	models.Response
-	News models.News
+	base.Response
+	News tables.News
 }
 
 func (res *NewsShowService) ShowNews(id string) *NewsShowService {
 	database := database2.GetDatabase()
-	news := models.News{}
+	news := tables.News{}
 
 	result := database.Preload("Topic").Where("id = ?", id).First(&news)
 

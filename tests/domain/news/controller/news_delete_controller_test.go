@@ -12,17 +12,17 @@ import (
 	"net/http/httptest"
 	"net/http"
 	"bytes"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"encoding/json"
 	"fmt"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
-func TestDeleteTopic(t *testing.T) {
+func TestDeleteNews(t *testing.T) {
 	gomega.RegisterFailHandler(ginkgo.Fail)
-	ginkgo.RunSpecs(t, "TopicDeleteController Test Suite")
+	ginkgo.RunSpecs(t, "NewsDeleteController Test Suite")
 }
 
-var _ = ginkgo.Describe("Test Delete Topic", func() {
+var _ = ginkgo.Describe("Test Delete News", func() {
 	var router *gin.Engine
 
 	var _ = ginkgo.BeforeEach(func() {
@@ -35,32 +35,35 @@ var _ = ginkgo.Describe("Test Delete Topic", func() {
 		database.DropTable()
 	})
 
-	ginkgo.It("should success to delete topic", func() {
-
+	ginkgo.It("should success to create news with valid payload", func() {
 		payload := map[string]interface{}{
-			"name":    "Topic name",
+
+			"headline":    "headline",
+			"title":       "title",
 			"description": "this is description",
+			"tags":        "tag, tes",
+			"status":      "draft",
 		}
 
 		body, _ := json.Marshal(payload)
 		w := httptest.NewRecorder()
 
-		req, _ := http.NewRequest("POST", "/topics", bytes.NewReader(body))
+		req, _ := http.NewRequest("POST", "/news", bytes.NewReader(body))
 		req.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, req)
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusCreated))
 
-		latestTopic := models.Topic{}
-		database.GetDatabase().Last(&latestTopic)
+		latestNews := tables.News{}
+		database.GetDatabase().Last(&latestNews)
 
 		w = httptest.NewRecorder()
-		req, _ = http.NewRequest("DELETE", fmt.Sprintf("/topics/%d", latestTopic.ID), nil)
+		req, _ = http.NewRequest("DELETE", fmt.Sprintf("/news/%d", latestNews.ID), nil)
 		router.ServeHTTP(w, req)
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusOK))
 
-		latestTopicAfterDelete := models.Topic{}
-		database.GetDatabase().Last(&latestTopicAfterDelete)
+		latestNewsAfterDelete := tables.News{}
+		database.GetDatabase().Last(&latestNewsAfterDelete)
 
-		gomega.Expect(latestTopic.ID).To(gomega.Not(gomega.Equal(latestTopicAfterDelete.ID)))
+		gomega.Expect(latestNews.ID).To(gomega.Not(gomega.Equal(latestNewsAfterDelete.ID)))
 	})
 })

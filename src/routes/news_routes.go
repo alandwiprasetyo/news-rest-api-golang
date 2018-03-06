@@ -1,15 +1,16 @@
 package routes
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/domain/news/controller"
+	. "github.com/alandwiprasetyo/rest-api/src/domain/news/controller"
+	"github.com/gin-gonic/gin"
 )
 
-func NewsRoutes() {
+func NewsRoutes() *gin.Engine {
 	router := GetRouter()
-
-	router.GET("/news", controller.ListNews)
-	router.POST("/news", controller.CreateNews)
-	router.GET("/news/:id", controller.ShowNews)
-	router.PUT("/news/:id", controller.UpdateNews)
-	router.DELETE("/news/:id", controller.DeleteNews)
+	router.GET("/news", ListNews)
+	router.POST("/news", CreateNews)
+	router.GET("/news/:id", ShowNews)
+	router.PUT("/news/:id", UpdateNews)
+	router.DELETE("/news/:id", DeleteNews)
+	return router;
 }

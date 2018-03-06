@@ -9,9 +9,9 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/routes"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"net/http/httptest"
 	"net/http"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 func TestListTopic(test *testing.T) {
@@ -33,7 +33,7 @@ var _ = ginkgo.Describe("Test List Topic", func() {
 	})
 
 	ginkgo.It("should return product list", func() {
-		product := models.Topic{
+		product := tables.Topic{
 			Name:       "Topic Name",
 			Description: "This is description",
 		}

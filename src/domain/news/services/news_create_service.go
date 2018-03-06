@@ -1,15 +1,16 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/domain/news/dto"
 	"github.com/alandwiprasetyo/rest-api/src/common"
 	database2 "github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/models/base"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 type NewsCreateService struct {
-	models.Response
-	News models.News
+	base.Response
+	News tables.News
 }
 
 func (res *NewsCreateService) CreateNews(dto *dto.NewsDTO) *NewsCreateService {
@@ -19,7 +20,7 @@ func (res *NewsCreateService) CreateNews(dto *dto.NewsDTO) *NewsCreateService {
 		return res
 	}
 	database := database2.GetDatabase()
-	news := models.News{Headline: dto.Headline, Title: dto.Title, Description: dto.Description, Tags: dto.Tags, Status: dto.Status}
+	news := tables.News{Headline: dto.Headline, Title: dto.Title, Description: dto.Description, Tags: dto.Tags, Status: dto.Status}
 	created := database.Create(&news)
 	if created.Error == nil {
 		res.News = news

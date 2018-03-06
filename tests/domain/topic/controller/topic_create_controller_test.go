@@ -13,7 +13,7 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/routes"
-	"github.com/alandwiprasetyo/rest-api/src/models"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 func TestCreateTopic(test *testing.T) {
@@ -35,7 +35,7 @@ var _ = ginkgo.Describe("Test Create Topic", func() {
 	})
 
 	ginkgo.It("should success to create topic with valid payload", func() {
-		topic := models.Topic{}
+		topic := tables.Topic{}
 		database.GetDatabase().Last(&topic)
 		payload := map[string]interface{}{
 			"name":    "Topic name",
@@ -49,7 +49,7 @@ var _ = ginkgo.Describe("Test Create Topic", func() {
 		req.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, req)
 
-		newData := models.Topic{}
+		newData := tables.Topic{}
 		database.GetDatabase().Last(&newData)
 
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusCreated))
@@ -57,7 +57,7 @@ var _ = ginkgo.Describe("Test Create Topic", func() {
 	})
 
 	ginkgo.It("should error validation with empty payload", func() {
-		topic := models.Topic{}
+		topic := tables.Topic{}
 		database.GetDatabase().Last(&topic)
 
 		payload := map[string]interface{}{
@@ -69,7 +69,7 @@ var _ = ginkgo.Describe("Test Create Topic", func() {
 		request.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, request)
 
-		newData := models.Topic{}
+		newData := tables.Topic{}
 		database.GetDatabase().Last(&newData)
 
 		gomega.Expect(w.Code).To(gomega.Equal(http.StatusBadRequest))

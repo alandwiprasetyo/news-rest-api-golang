@@ -4,13 +4,13 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"testing"
-	"github.com/alandwiprasetyo/rest-api/src/domain/topic/dto"
-	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
-	"github.com/alandwiprasetyo/rest-api/src/database"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"strconv"
+	"github.com/alandwiprasetyo/rest-api/src/domain/topic/dto"
+	"github.com/alandwiprasetyo/rest-api/src/database"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
+	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
 )
 
 func TestTopicUpdateService(t *testing.T) {
@@ -56,7 +56,7 @@ var _ = Describe("Test TestTopicUpdateService", func() {
 		})
 
 		It("should return topic", func() {
-			topic := models.Topic{
+			topic := tables.Topic{
 				Name:        "Name",
 				Description: "This is description",
 			}

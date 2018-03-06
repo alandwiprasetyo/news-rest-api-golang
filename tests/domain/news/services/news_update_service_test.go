@@ -10,6 +10,7 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/models/tables"
+	"github.com/alandwiprasetyo/rest-api/src/domain/news/services"
 )
 
 func TestProductUpdateService(t *testing.T) {
@@ -32,7 +33,7 @@ var _ = Describe("Test ProductUpdateService", func() {
 		It("should return validation error", func() {
 			dto := &dto.NewsDTO{}
 
-			service := NewsUpdateService{}
+			service := services.NewsUpdateService{}
 			res := service.UpdateNews("id", dto)
 
 			Expect(res.ErrorValidation).To(Not(BeNil()))
@@ -49,7 +50,7 @@ var _ = Describe("Test ProductUpdateService", func() {
 				Tags:        "Tags 1, Tag 2",
 			}
 
-			service := NewsUpdateService{}
+			service := services.NewsUpdateService{}
 			res := service.UpdateNews("id", dto)
 
 			Expect(res.ErrorValidation).To(BeNil())
@@ -75,7 +76,7 @@ var _ = Describe("Test ProductUpdateService", func() {
 				Tags:        "Tags 1, Tag 2",
 			}
 
-			service := NewsUpdateService{}
+			service := services.NewsUpdateService{}
 			res := service.UpdateNews(strconv.Itoa(news.ID), dto)
 
 			Expect(res.ErrorValidation).To(BeNil())

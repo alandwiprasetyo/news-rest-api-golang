@@ -9,6 +9,7 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/models/tables"
+	"github.com/alandwiprasetyo/rest-api/src/domain/news/services"
 )
 
 func TestProductDeleteService(t *testing.T) {
@@ -28,7 +29,7 @@ var _ = Describe("Test ProductDeleteService", func() {
 
 	Describe("Test func DeleteProduct", func() {
 		It("should return not found", func() {
-			service := NewsDeleteService{}
+			service := services.NewsDeleteService{}
 			res := service.DeleteNews("12-21")
 
 			Expect(res.Error).To(Equal("record not found"))
@@ -45,7 +46,7 @@ var _ = Describe("Test ProductDeleteService", func() {
 			}
 			database.GetDatabase().Create(&product)
 
-			service := NewsDeleteService{}
+			service := services.NewsDeleteService{}
 			res := service.DeleteNews(strconv.Itoa(product.ID))
 
 			Expect(res.Error).To(Equal(""))

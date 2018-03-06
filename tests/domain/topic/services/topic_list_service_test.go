@@ -4,11 +4,11 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"testing"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/database"
-	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
+	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
 )
 
 func TestTopicListService(t *testing.T) {
@@ -28,7 +28,7 @@ var _ = Describe("Test TopicListService", func() {
 
 	Describe("Test func ListTopics", func() {
 		It("should return topic list", func() {
-			topic := models.Topic{
+			topic := tables.Topic{
 				Name:    "Topic Name",
 				Description: "This is description",
 			}

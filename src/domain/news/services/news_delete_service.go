@@ -1,23 +1,24 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
+	"github.com/alandwiprasetyo/rest-api/src/models/base"
 	database2 "github.com/alandwiprasetyo/rest-api/src/database"
 )
 
 type NewsDeleteService struct {
-	models.Response
-	News models.News
+	base.Response
+	News tables.News
 }
 
 func (res *NewsDeleteService) DeleteNews(id string) *NewsDeleteService {
 	database := database2.GetDatabase()
-	news := models.News{}
+	news := tables.News{}
 
 	result := database.Where("id = ?", id).First(&news)
-	news.Status = models.DELETED
+	news.Status = tables.DELETED
 	database.Save(&news).Delete(&news)
-	database.Find(&news,id)
+	database.Find(&news, id)
 
 	if result.Error != nil {
 		res.Error = result.Error.Error()

@@ -1,10 +1,9 @@
-package models
+package tables
 
 import (
 	"testing"
 	"github.com/onsi/ginkgo"
 	"github.com/onsi/gomega"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/database"
@@ -26,8 +25,8 @@ var _ = ginkgo.Describe("Test News Model", func() {
 	})
 	ginkgo.Describe("Test Create News Model", func() {
 
-		ginkgo.It("Should create news model", func() {
-			news := models.News{Headline: "Headline", Title: "Title", Status: "draft", Description: "This is description", Tags: "Tags 1, Tag 2"}
+		ginkgo.It("Should create news models", func() {
+			news := News{Headline: "Headline", Title: "Title", Status: "draft", Description: "This is description", Tags: "Tags 1, Tag 2"}
 
 			gomega.Expect(news.Headline).To(gomega.Equal("Headline"))
 			gomega.Expect(news.Title).To(gomega.Equal("Title"))

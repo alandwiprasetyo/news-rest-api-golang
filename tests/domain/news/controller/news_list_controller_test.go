@@ -9,18 +9,17 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/routes"
-	"github.com/alandwiprasetyo/rest-api/src/models"
 	"net/http/httptest"
 	"net/http"
-	"fmt"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
-func TestShowTopic(test *testing.T) {
+func TestListNews(test *testing.T) {
 	gomega.RegisterFailHandler(ginkgo.Fail)
-	ginkgo.RunSpecs(test, "TopicShowController Test Suite")
+	ginkgo.RunSpecs(test, "NewsListController Test Suite")
 }
 
-var _ = ginkgo.Describe("Test Show Topic", func() {
+var _ = ginkgo.Describe("Test List News", func() {
 	var router *gin.Engine
 
 	var _ = ginkgo.BeforeEach(func() {
@@ -33,24 +32,18 @@ var _ = ginkgo.Describe("Test Show Topic", func() {
 		database.DropTable()
 	})
 
-	ginkgo.It("should return not found", func() {
-		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", fmt.Sprintf("/topics/12313-1231"), nil)
-		req.Header.Add("Content-Type", "application/json")
-		router.ServeHTTP(w, req)
-
-		gomega.Expect(w.Code).To(gomega.Equal(http.StatusNotFound))
-	})
-
-	ginkgo.It("should return show topic by ID", func() {
-		product := models.Topic{
-			Name:    "Topic name",
+	ginkgo.It("should return product list", func() {
+		product := tables.News{
+			Headline:    "Headline",
+			Title:       "Title",
 			Description: "This is description",
+			Status:      "draft",
+			Tags:        "Tag1, Tag 2",
 		}
 		database.GetDatabase().Create(&product)
 
 		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", fmt.Sprintf("/topics/%d", product.ID), nil)
+		req, _ := http.NewRequest("GET", "/news", nil)
 		req.Header.Add("Content-Type", "application/json")
 		router.ServeHTTP(w, req)
 

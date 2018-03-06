@@ -1,18 +1,19 @@
 package services
 
 import (
-	"github.com/alandwiprasetyo/rest-api/src/models"
-	database2 "github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/models/base"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 type TopicShowService struct {
-	models.Response
-	Topic models.Topic
+	base.Response
+	Topic tables.Topic
 }
 
 func (res *TopicShowService) ShowTopic(id string) *TopicShowService {
-	database := database2.GetDatabase()
-	topic := models.Topic{}
+	database := database.GetDatabase()
+	topic := tables.Topic{}
 
 	result := database.Where("id = ?", id).First(&topic)
 	if result.RecordNotFound() {

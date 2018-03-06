@@ -5,10 +5,10 @@ import (
 	. "github.com/onsi/gomega"
 	"testing"
 	"github.com/alandwiprasetyo/rest-api/src/domain/topic/dto"
-	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/domain/topic/services"
 )
 
 func TestTopicCreateService(t *testing.T) {

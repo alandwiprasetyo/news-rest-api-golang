@@ -4,7 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"fmt"
-	"github.com/alandwiprasetyo/rest-api/src/models"
+	"github.com/alandwiprasetyo/rest-api/src/models/tables"
 )
 
 var database *gorm.DB
@@ -35,13 +35,14 @@ func GetDatabase() *gorm.DB {
 			fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 				"root",
 				"root",
-				"db",
+				"localhost",
 				"3306",
 				"restapidb"))
 	}
 	return database
 }
+
 func DropTable() {
-	GetDatabase().DropTable(&models.News{})
-	GetDatabase().DropTable(&models.Topic{}, "news_topics")
+	GetDatabase().DropTable(&tables.News{})
+	GetDatabase().DropTable(&tables.Topic{}, "news_topics")
 }

@@ -1,4 +1,6 @@
-package models
+package tables
+
+import "github.com/alandwiprasetyo/rest-api/src/models/base"
 
 const (
 	PUBLISH string = "publish"
@@ -7,7 +9,7 @@ const (
 )
 
 type News struct {
-	Model
+	base.Model
 	Headline    string  `json:"headline"`
 	Title       string  `gorm:"size:255" json:"title"`
 	Status      string  `gorm:"size:255;default:'draft'" sql:"not null;type:ENUM('draft', 'publish', 'deleted');default:'draft'"  json:"status"`

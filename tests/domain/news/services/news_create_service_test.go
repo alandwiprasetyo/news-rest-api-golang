@@ -8,6 +8,7 @@ import (
 	"github.com/alandwiprasetyo/rest-api/src/models/migrations"
 	"github.com/alandwiprasetyo/rest-api/src/models/seeders"
 	"github.com/alandwiprasetyo/rest-api/src/database"
+	"github.com/alandwiprasetyo/rest-api/src/domain/news/services"
 )
 
 func TestNewsCreateService(t *testing.T) {
@@ -29,7 +30,7 @@ var _ = Describe("Test NewsCreateService", func() {
 		It("should return error validation", func() {
 			dto := &dto.NewsDTO{}
 
-			service := NewsCreateService{}
+			service := services.NewsCreateService{}
 			res := service.CreateNews(dto)
 
 			Expect(res.News).To(Not(BeNil()))
@@ -46,7 +47,7 @@ var _ = Describe("Test NewsCreateService", func() {
 				Tags:        "Tags 1, Tag 2",
 			}
 
-			service := NewsCreateService{}
+			service := services.NewsCreateService{}
 			res := service.CreateNews(dto)
 
 			Expect(res.ErrorValidation).To(BeNil())
